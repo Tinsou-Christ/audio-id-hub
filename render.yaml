@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: shazam-api
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /
+    envVars:
+      - key: SAMPLE_SECONDS
+        value: "12"
+      - key: RECOGNIZE_TIMEOUT
+        value: "60"
+      - key: MAX_CONTENT_MB
+        value: "50"
+      # Optionnel : moteur de secours AudD (https://audd.io)
+      - key: AUDD_API_TOKEN
+        sync: false
